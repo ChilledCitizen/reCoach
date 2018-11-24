@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.IO;
 
 namespace Junction18 {
     public static class Data_Optimizer {
@@ -146,8 +147,9 @@ namespace Junction18 {
 
             
             finaData.Add (new JProperty("Averages",averages));
+            string path = System.IO.Directory.GetCurrentDirectory() + "/client/src/data/gameData.json";
 
-            Console.WriteLine(finaData);
+            System.IO.File.WriteAllText(path, finaData.ToString());
 
            
 
