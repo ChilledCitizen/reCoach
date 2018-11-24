@@ -38,14 +38,11 @@ namespace Junction18 {
             Data_Optimizer.CombineData (rawPlayerStateDataList, rawPlayerSessionDataList, gameFrameDataList, gameSessionDataList);
         }
 
-        public List<JObject> DeserializePlayersData (string data) {
+        public List<GameFramePlayers> DeserializePlayersData (string data) {
 
             List<GameFramePlayers> newData = JsonConvert.DeserializeObject<List<GameFramePlayers>> (data);
-            List<JObject> objList = new List<JObject> ();
-            foreach (var d in newData) {
-                objList.Add (JObject.FromObject (d));
-            }
-            return objList;
+            
+            return newData;
 
         }
 

@@ -33,6 +33,7 @@ namespace Junction18 {
                 while (dataReader.Read ()) {
                     rawData = new JObject (
                         new JProperty ("SessionID", dataReader["sessionid"]),
+                        new JProperty ("PlayerGUID", dataReader["playerguid"]),
                         new JProperty ("Position_X", dataReader["posX"]),
                         new JProperty ("Position_Y", dataReader["posY"]),
                         new JProperty ("Frame_Number", dataReader["framenumber"]),
