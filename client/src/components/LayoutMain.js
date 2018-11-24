@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Heatmap } from '../containers/Heatmap';
+import { Heatmap } from './Heatmap';
 import SessionList from './SessionList';
 import Chart from '../containers/Chart';
 
