@@ -1,0 +1,11 @@
+/home/cask/Desktop/Junction18/bin/Debug/netcoreapp2.1/Junction18.deps.json
+/home/cask/Desktop/Junction18/bin/Debug/netcoreapp2.1/Junction18.runtimeconfig.json
+/home/cask/Desktop/Junction18/bin/Debug/netcoreapp2.1/Junction18.runtimeconfig.dev.json
+/home/cask/Desktop/Junction18/bin/Debug/netcoreapp2.1/Junction18.dll
+/home/cask/Desktop/Junction18/bin/Debug/netcoreapp2.1/Junction18.pdb
+/home/cask/Desktop/Junction18/obj/Debug/netcoreapp2.1/Junction18.csprojAssemblyReference.cache
+/home/cask/Desktop/Junction18/obj/Debug/netcoreapp2.1/Junction18.csproj.CoreCompileInputs.cache
+/home/cask/Desktop/Junction18/obj/Debug/netcoreapp2.1/Junction18.AssemblyInfoInputs.cache
+/home/cask/Desktop/Junction18/obj/Debug/netcoreapp2.1/Junction18.AssemblyInfo.cs
+/home/cask/Desktop/Junction18/obj/Debug/netcoreapp2.1/Junction18.dll
+/home/cask/Desktop/Junction18/obj/Debug/netcoreapp2.1/Junction18.pdb
