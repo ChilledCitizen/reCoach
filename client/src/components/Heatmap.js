@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { scaleLinear } from 'd3-scale';
 import { get } from 'lodash';
+import data from '../data/data.json';
+import { rgba } from 'polished'
 
-import '../styles/heatMap.css'; 
+import '../styles/heatMap.css';
 
 // All the magic numbers ✨
-const SIDE_LENGTH = 70;
+const SIDE_LENGTH = 105;
 const HORIZONTAL_OFFSET = SIDE_LENGTH;
 const HORIZONTAL_START = -77940; // Map X min coordinate
 const HORIZONTAL_END = 78080; // Map X max coordinate
@@ -87,7 +89,8 @@ export class Heatmap extends React.Component {
   };
 
   drawPlayers = () => {
-    const { data } = this.props;
+    const { movementData } = data;
+    // const { data } = this.props;
     const scaleWidth = scaleLinear()
       .domain([HORIZONTAL_START, HORIZONTAL_END])
       .range([HORIZONTAL_OFFSET, HORIZONTAL_CLAMP]);
@@ -96,38 +99,33 @@ export class Heatmap extends React.Component {
       .range([-VERTICAL_OFFSET / 2 + SIDE_LENGTH, VERTICAL_CLAMP])
       .clamp(true);
     const context = this.players.getContext('2d');
-    // data.forEach(data => {
-      //   data.players.forEach(player => {
-        context.fillStyle = 'red';
-        console.log(scaleWidth(-2741.3205,0));
-          context.fillRect(
-            scaleWidth(-2741.3205,0),
-          scaleHeight(-2741.3205,0),
-          10,10)
-    //     context.beginPath()
-    //     context.arc(
-    //       scaleWidth(get(player, 'state.state.position.x'), 0),
-    //       scaleHeight(get(player, 'state.state.position.y'), 0),
-    //       6,
-    //       0,
-    //       2 * Math.PI
-    //     )
-
-    context.fill();
-    //   })
-    // })
+    movementData.forEach(item => {
+      context.fillStyle = '#FF000075';
+      context.beginPath();
+      context.arc(
+        scaleWidth(item[0], 0),
+        scaleHeight(item[1], 0),
+        6,0, 2 * Math.PI
+        );
+        context.fill();
+    });
   };
 
   render() {
     return (
       <div className="heatmap align-center">
         <div className="align-center">
-        <span className="title bold heat-map-title">HEAT MAP</span>
+          <span className="title bold heat-map-title">HEAT MAP</span>
         </div>
-        <canvas width={500} height={500} ref={ref => (this.canvas = ref)} style={{background:'#00000040'}}/>
         <canvas
-          width={500}
-          height={500}
+          width={800}
+          height={700}
+          ref={ref => (this.canvas = ref)}
+          style={{ background: '#00000040' }}
+        />
+        <canvas
+          width={800}
+          height={700}
           ref={ref => (this.players = ref)}
           style={{ position: 'absolute', left: 0 }}
         />

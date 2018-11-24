@@ -8,22 +8,20 @@ import {
   Tooltip,
   Legend
 } from 'recharts';
+// import json from 'json-loader';
+import data from '../data/data.json';
 
-const data = [
-  { SurvivedDuration: 4000 },
-  { SurvivedDuration: 3000 },
-  { SurvivedDuration: 2000 },
-  { SurvivedDuration: 2780 },
-  { SurvivedDuration: 1890 },
-  { SurvivedDuration: 2390 },
-  { SurvivedDuration: 3490 }
-];
+const {sessionDurationData} = data;
+const data1 = []
+sessionDurationData.forEach(item=> data1.push({"SurvivedDuration":item}));
 
-const Chart = () => (
+
+const Chart = () => {
+  return(
   <LineChart
     width={600}
     height={300}
-    data={data}
+    data={data1}
     margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
   >
     <XAxis/>
@@ -33,6 +31,6 @@ const Chart = () => (
     <Legend />
     <Line type="monotone" dataKey="SurvivedDuration" stroke="#8884d8" activeDot={{ r: 8 }} />
   </LineChart>
-);
+)};
 
 export default Chart;

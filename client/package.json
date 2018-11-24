@@ -5,6 +5,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "d3-scale": "^2.1.2",
+    "json-loader": "^0.5.7",
+    "polished": "^2.3.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-redux": "^5.1.1",
