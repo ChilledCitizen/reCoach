@@ -6,7 +6,6 @@ const SessionList = (props) =>{
     const { handleClick }= props;
     return(
     <div className="session-list__container">
-    {console.log(props)}
         <ul className="session-list__heading align-center">
             <li>Date</li>
             <li>Total time</li>

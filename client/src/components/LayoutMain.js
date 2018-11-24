@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { Heatmap } from './Heatmap';
 import SessionList from './SessionList';
-import Chart from '../containers/Chart';
+import Chart from './Chart';
 
 import '../styles/layoutMain.css';
 
 class LayoutMain extends Component {
+
   handleClick = e => {
     e.preventDefault();
     console.log(e);
   };
+
   render() {
     return (
       <div className="main-container">

@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { scaleLinear } from 'd3-scale';
-import { get } from 'lodash';
 import data from '../data/data.json';
-import { rgba } from 'polished'
 
 import '../styles/heatMap.css';
 
@@ -105,9 +103,11 @@ export class Heatmap extends React.Component {
       context.arc(
         scaleWidth(item[0], 0),
         scaleHeight(item[1], 0),
-        6,0, 2 * Math.PI
-        );
-        context.fill();
+        6,
+        0,
+        2 * Math.PI
+      );
+      context.fill();
     });
   };
 
