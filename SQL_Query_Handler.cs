@@ -23,7 +23,7 @@ namespace Junction18 {
                 SQLiteDataReader dataReader;
 
                 //Getting player state on the frame they died - will have more frames taken before death later
-                command.CommandText = "SELECT * FROM player_state WHERE stateflags = 53 AND playerguid = '" + playerGUID + "'";
+                command.CommandText = "SELECT * FROM player_state WHERE stateflags > 32 AND playerguid = '" + playerGUID + "'";
                 command.CommandType = CommandType.Text;
                 command.Connection = con;
 
@@ -70,9 +70,8 @@ namespace Junction18 {
 
                 con.Close ();
 
-                jsonHandler.InitializeProcessing ();
-
             }
+            jsonHandler.InitializeProcessing ();
         }
 
         public static string GetWeaponName (int id) {
