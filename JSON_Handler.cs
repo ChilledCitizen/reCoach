@@ -38,6 +38,17 @@ namespace Junction18 {
             Data_Optimizer.CombineData (rawPlayerStateDataList, rawPlayerSessionDataList, gameFrameDataList, gameSessionDataList);
         }
 
+        public List<JObject> DeserializePlayersData (string data) {
+
+            List<GameFramePlayers> newData = JsonConvert.DeserializeObject<List<GameFramePlayers>> (data);
+            List<JObject> objList = new List<JObject> ();
+            foreach (var d in newData) {
+                objList.Add (JObject.FromObject (d));
+            }
+            return objList;
+
+        }
+
     }
 
     public class OptimizedJSON {
@@ -46,5 +57,39 @@ namespace Junction18 {
 
     public class OutputJSON {
 
+    }
+
+    public class Viewangles {
+        public double y { get; set; }
+        public double w { get; set; }
+        public double x { get; set; }
+        public double z { get; set; }
+    }
+
+    public class Position {
+        public double y { get; set; }
+        public double x { get; set; }
+        public double z { get; set; }
+    }
+
+    public class State2 {
+        public int health { get; set; }
+        public Viewangles viewangles { get; set; }
+        public Position position { get; set; }
+        public int fov { get; set; }
+        public int weapon_id { get; set; }
+        public int stateflags { get; set; }
+        public int tickflags { get; set; }
+    }
+
+    public class State {
+        public State2 state { get; set; }
+        public int character_id { get; set; }
+        public int team_id { get; set; }
+    }
+
+    public class GameFramePlayers {
+        public State state { get; set; }
+        public string guid { get; set; }
     }
 }
