@@ -10,13 +10,13 @@ import {
 } from 'recharts';
 
 const data = [
-  { name: 'Session A', SurvivedDuration: 4000 },
-  { name: 'Session B', SurvivedDuration: 3000 },
-  { name: 'Session C', SurvivedDuration: 2000 },
-  { name: 'Session D', SurvivedDuration: 2780 },
-  { name: 'Session E', SurvivedDuration: 1890 },
-  { name: 'Session F', SurvivedDuration: 2390 },
-  { name: 'Session G', SurvivedDuration: 3490 }
+  { SurvivedDuration: 4000 },
+  { SurvivedDuration: 3000 },
+  { SurvivedDuration: 2000 },
+  { SurvivedDuration: 2780 },
+  { SurvivedDuration: 1890 },
+  { SurvivedDuration: 2390 },
+  { SurvivedDuration: 3490 }
 ];
 
 const Chart = () => (
@@ -26,7 +26,7 @@ const Chart = () => (
     data={data}
     margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
   >
-    <XAxis dataKey="name" />
+    <XAxis/>
     <YAxis />
     <CartesianGrid strokeDasharray="3 3" />
     <Tooltip />

@@ -13,7 +13,7 @@ class LayoutMain extends Component {
   render() {
     return (
       <div className="main-container">
-        <h2 className="title player-name">Player Name</h2>
+        <h2 className="title player-name">Intermediate</h2>
         <div className="left-container">
           <div className="title box">
             <p className="bold">Game Sessions</p>
