@@ -1,0 +1,31 @@
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.left-container {
+  grid-column: 1;
+}
+.left-container .box {
+  margin: 10px;
+  padding: 10px;
+  height: 400px;
+  box-shadow: inset 0px 1px 8px 0px grey;
+  background: #00000040;
+  overflow: auto;
+}
+
+.right-container {
+  grid-column: 2;
+  position: relative;
+  overflow: auto;
+}
+.player-name {
+  margin: 0px 20px;
+  font-size: 2rem;
+}
+.chart, .heatmap{
+    margin:10px;
+    background-color: #00000040;
+}
+

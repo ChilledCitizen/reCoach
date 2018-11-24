@@ -1,0 +1,41 @@
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  color:#cebaba;
+}
+
+body{
+  background: black;
+}
+
+.App{
+  width:90%;
+  margin: 0px auto;
+  background-image: url('../images/darwin_bg.jpg');
+  background-size: cover;
+  background-blend-mode: darken;
+  background-color: blue;
+}
+.title{
+ font-family: Indie Flower;
+}
+.bold{
+  font-weight: 600;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 0.25vw;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 1px grey;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: grey;
+}

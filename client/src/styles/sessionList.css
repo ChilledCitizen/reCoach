@@ -1,0 +1,22 @@
+.session-list__container {
+}
+.session-list__heading, .session-list-text {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  list-style-type: none;
+}
+.align-center{
+    text-align: center;
+}
+.session-list__heading li{
+    border-bottom: 1px solid gray;
+} 
+.session-list-text:hover{
+    background-color: #51538ead;
+    cursor: pointer;
+}
+.session-list-text li{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
