@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { scaleLinear } from 'd3-scale';
-import data from '../data/data.json';
 
 import '../styles/heatMap.css';
 
@@ -21,11 +20,12 @@ export class Heatmap extends React.Component {
 
   componentDidMount() {
     this.canvas && this.drawMap();
-    this.players && this.drawPlayers();
+    console.log(this.props.movementData1);
+    this.props.movementData1 !== undefined && this.drawPlayers();
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.size !== this.props.size) {
+    if (prevProps !== this.props) {
       this.drawMap();
       this.drawPlayers();
     }
@@ -33,7 +33,6 @@ export class Heatmap extends React.Component {
 
   drawMap = () => {
     const context = this.canvas.getContext('2d');
-
     const hexHeight = Math.sin(HEXAGON_ANGLE) * SIDE_LENGTH;
     const hexRadius = Math.cos(HEXAGON_ANGLE) * SIDE_LENGTH;
     const hexRectangleHeight = SIDE_LENGTH + 2 * hexHeight;
@@ -87,35 +86,33 @@ export class Heatmap extends React.Component {
   };
 
   drawPlayers = () => {
-    const { movementData } = data;
-    // const { data } = this.props;
+    const { movementData1 } = this.props;
     const scaleWidth = scaleLinear()
-      .domain([HORIZONTAL_START, HORIZONTAL_END])
-      .range([HORIZONTAL_OFFSET, HORIZONTAL_CLAMP]);
+    .domain([HORIZONTAL_START, HORIZONTAL_END])
+    .range([HORIZONTAL_OFFSET, HORIZONTAL_CLAMP]);
     const scaleHeight = scaleLinear()
-      .domain([VERTICAL_START, VERTICAL_END])
-      .range([-VERTICAL_OFFSET / 2 + SIDE_LENGTH, VERTICAL_CLAMP])
-      .clamp(true);
+    .domain([VERTICAL_START, VERTICAL_END])
+    .range([-VERTICAL_OFFSET / 2 + SIDE_LENGTH, VERTICAL_CLAMP])
+    .clamp(true);
     const context = this.players.getContext('2d');
-    movementData.forEach(item => {
-      context.fillStyle = '#FF000075';
-      context.beginPath();
-      context.arc(
-        scaleWidth(item[0], 0),
-        scaleHeight(item[1], 0),
-        6,
-        0,
-        2 * Math.PI
-      );
-      context.fill();
+    movementData1.length !== 0 && movementData1.forEach(item => {
+      context.fillStyle = 'red';
+      context.fillRect(
+        scaleWidth(item.POSITION_X, 0),
+        scaleHeight(item.POSITION_Y, 0),
+        10,
+        10,
+        );
+        context.fill();
     });
   };
+  
 
   render() {
     return (
       <div className="heatmap align-center">
         <div className="align-center">
-          <span className="title bold heat-map-title">HEAT MAP</span>
+          <span className="title bold heat-map-title">Died Location</span>
         </div>
         <canvas
           width={800}

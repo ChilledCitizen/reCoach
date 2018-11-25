@@ -9,7 +9,7 @@
 .left-container .box {
   margin: 10px;
   padding: 10px;
-  height: 400px;
+  height: inherit;
   box-shadow: inset 0px 1px 8px 0px grey;
   background: #00000040;
   overflow: auto;
@@ -21,7 +21,7 @@
   overflow: auto;
 }
 .player-name {
-  margin: 0px 20px;
+  margin: 10px 20px;
   font-size: 2rem;
 }
 .chart, .heatmap{

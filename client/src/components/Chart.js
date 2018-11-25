@@ -8,14 +8,11 @@ import {
   Tooltip,
   Legend
 } from 'recharts';
-// import json from 'json-loader';
-import data from '../data/data.json';
 
-const { sessionDurationData } = data;
-const data1 = [];
-sessionDurationData.forEach(item => data1.push({ SurvivedDuration: item }));
-
-const Chart = () => {
+const Chart = (props) => {
+  const data1 = [];
+  const {data} = props;
+  data.forEach(session => data1.push({'SurvivedDuration': session.SESSION_TIME }))
   return (
     <div>
       <div className="align-center">

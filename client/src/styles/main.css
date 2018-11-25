@@ -27,6 +27,11 @@ body{
 .bold{
   font-weight: 600;
 }
+.flex{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 /* width */
 ::-webkit-scrollbar {
   width: 0.25vw;
