@@ -10,6 +10,8 @@
     "POSITION_X": -25613.142578125,
     "POSITION_Y": 32409.220703125,
     "PLACEMENT": 8,
+    "KILLER": "Environment",
+    "WEAPON_KILLED_WITH": "Cold",
     "SESSION_START_TIME": "2018-11-15T04:07:03+02:00"
   },
   "Session_1": {
@@ -23,6 +25,8 @@
     "POSITION_X": 12504.6455078125,
     "POSITION_Y": 24587.2578125,
     "PLACEMENT": 7,
+    "KILLER": "Jesse_Hunter",
+    "WEAPON_KILLED_WITH": "WarriorArrow",
     "SESSION_START_TIME": "2018-11-15T06:45:37+02:00"
   },
   "Session_2": {
@@ -36,6 +40,8 @@
     "POSITION_X": -32574.0859375,
     "POSITION_Y": -18917.43359375,
     "PLACEMENT": 6,
+    "KILLER": "Environment",
+    "WEAPON_KILLED_WITH": "Cold",
     "SESSION_START_TIME": "2018-11-15T06:59:12+02:00"
   },
   "Session_3": {
@@ -49,6 +55,8 @@
     "POSITION_X": 37049.87890625,
     "POSITION_Y": 3027.13134765625,
     "PLACEMENT": 4,
+    "KILLER": "Environment",
+    "WEAPON_KILLED_WITH": "Cold",
     "SESSION_START_TIME": "2018-11-16T01:16:38+02:00"
   },
   "Session_4": {
@@ -62,6 +70,8 @@
     "POSITION_X": -10657.486328125,
     "POSITION_Y": 29753.71875,
     "PLACEMENT": 9,
+    "KILLER": "Environment",
+    "WEAPON_KILLED_WITH": "Cold",
     "SESSION_START_TIME": "2018-11-16T05:17:49+02:00"
   },
   "Session_5": {
@@ -90,6 +100,8 @@
     "POSITION_X": -7281.318359375,
     "POSITION_Y": 17455.310546875,
     "PLACEMENT": 5,
+    "KILLER": "Environment",
+    "WEAPON_KILLED_WITH": "Cold",
     "SESSION_START_TIME": "2018-11-16T05:33:31+02:00"
   }
 }

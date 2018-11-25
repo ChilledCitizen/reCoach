@@ -66,7 +66,7 @@ namespace Junction18 {
             int tmpA = 0;
 
             foreach (var session in data) {
-
+                bool gotMurdered = false;
                 tmpK += session["KILLS"].ToObject<int> ();
                 tmpD += session["DEATHS"].ToObject<int> ();
                 tmpS += session["SESSION_TIME"].ToObject<int> ();
@@ -89,19 +89,21 @@ namespace Junction18 {
 
                     if (player.state.state.stateflags == 3 || player.state.state.stateflags == 2) //Player shooting and alive, or only shooting
                     {
-                        if (Math.Abs (player.state.state.position.x - session["POSITION_X"].ToObject<int> ()) < 1000) {
-                            if (Math.Abs (player.state.state.position.y - session["POSITION_Y"].ToObject<int> ()) < 1000) {
+                        if (Math.Abs (player.state.state.position.x - session["POSITION_X"].ToObject<int> ()) < 1500) {
+                            if (Math.Abs (player.state.state.position.y - session["POSITION_Y"].ToObject<int> ()) < 1500) {
                                 if (player.guid != session["PLAYER_GUID"].ToString ()) {
                                     //the player maybe shooting the user, be the killer
                                     session.Add (new JProperty ("KILLER", player.guid));
                                     string weaponName = SQL_Query_Handler.GetWeaponName (player.state.state.weapon_id);
                                     session.Add (new JProperty ("WEAPON_KILLED_WITH", weaponName));
+                                    gotMurdered = true;
                                 }
 
                             }
 
                         }
                     }
+
                 }
 
                 session.Remove ("WEAPON_ID");
@@ -112,9 +114,13 @@ namespace Junction18 {
                 session.Remove ("HEALTH");
                 int time = session["SESSION_START_TIME"].ToObject<int> ();
                 session.Remove ("SESSION_START_TIME");
+                if (!gotMurdered) {
+                    session.Add (new JProperty ("KILLER", "Environment"));
+                    session.Add (new JProperty ("WEAPON_KILLED_WITH", "Cold"));
+                }
                 System.DateTime dtDateTime = new DateTime (1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
                 dtDateTime = dtDateTime.AddSeconds (time).ToLocalTime ();
-                session.Add("SESSION_START_TIME",dtDateTime);
+                session.Add ("SESSION_START_TIME", dtDateTime);
 
                 finalData.Add (new JProperty ("Session_" + data.IndexOf (session), session));
 
