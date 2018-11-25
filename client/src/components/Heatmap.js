@@ -20,7 +20,6 @@ export class Heatmap extends React.Component {
 
   componentDidMount() {
     this.canvas && this.drawMap();
-    console.log(this.props.movementData1);
     this.props.movementData1 !== undefined && this.drawPlayers();
   }
 

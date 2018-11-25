@@ -25,7 +25,7 @@ class LayoutMain extends Component {
     const SingleSessionData = [];
     const tmp = e.target.parentNode.id || e.target.id;
     data.forEach(session => {
-      if (session.SESSION_ID == tmp) {
+      if (session.SESSION_ID === Number(tmp)) {
         SingleSessionData.push(session);
       }
       this.setState({ SingleSessionData });
@@ -45,7 +45,7 @@ class LayoutMain extends Component {
         </div>
         <div className="flex" >
         <h2 className="title player-name">Avg. Accuracy: {AVERAGE_ACCURACY}</h2>
-        <h2 className="title player-name">Avg. Survive: {AVERAGE_SESSION_TIME_IN_SECONDS}</h2>
+        <h2 className="title player-name">Avg. Survive: {AVERAGE_SESSION_TIME_IN_SECONDS}s</h2>
         </div>
         <div className="left-container">
           <div className="title box">
