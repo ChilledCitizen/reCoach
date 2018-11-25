@@ -49,7 +49,7 @@ class LayoutMain extends Component {
         </div>
         <div className="left-container">
           <div className="title box">
-            <p className="bold">Game Sessions</p>
+            <h2 className="bold">Game Sessions</h2>
             <hr />
             <SessionList
               Keys={Keys}
@@ -59,7 +59,9 @@ class LayoutMain extends Component {
             <div />
           </div>
           <div className="box title bold sugession">
-            <p className="bold">Some Sugessions</p>
+            <h2 className="bold">Some Sugessions</h2>
+            <p className="bold">Work on Positioning</p>
+
           </div>
         </div>
         <div className="right-container">
