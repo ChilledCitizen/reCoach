@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.IO;
 
 namespace Junction18 {
     public static class Data_Optimizer {
@@ -56,10 +56,7 @@ namespace Junction18 {
         static void ProcessCombinedData (List<JObject> data) {
             //Separate the "Players" data from the jobject to it's own object which will be processed to get 
             //the nearest player doing damage to figure out the killer and the weapon used. 
-            JObject finaData = new JObject ();
-           
-            
-        
+            JObject finalData = new JObject ();
 
             //For calculations
             int tmpK = 0;
@@ -67,8 +64,6 @@ namespace Junction18 {
             int tmpS = 0;
             int tmpP = 0;
             int tmpA = 0;
-
-            
 
             foreach (var session in data) {
 
@@ -88,8 +83,7 @@ namespace Junction18 {
                     }
                 }
                 tmpP += players.Count;
-                session.Add(new JProperty("PLACEMENT",players.Count));
-                
+                session.Add (new JProperty ("PLACEMENT", players.Count));
 
                 foreach (var player in players) {
 
@@ -99,9 +93,9 @@ namespace Junction18 {
                             if (Math.Abs (player.state.state.position.y - session["POSITION_Y"].ToObject<int> ()) < 1000) {
                                 if (player.guid != session["PLAYER_GUID"].ToString ()) {
                                     //the player maybe shooting the user, be the killer
-                                    session.Add(new JProperty("KILLER",player.guid));
-                                    string weaponName = SQL_Query_Handler.GetWeaponName(player.state.state.weapon_id);
-                                    session.Add(new JProperty("WEAPON_KILLED_WITH",weaponName));
+                                    session.Add (new JProperty ("KILLER", player.guid));
+                                    string weaponName = SQL_Query_Handler.GetWeaponName (player.state.state.weapon_id);
+                                    session.Add (new JProperty ("WEAPON_KILLED_WITH", weaponName));
                                 }
 
                             }
@@ -110,14 +104,19 @@ namespace Junction18 {
                     }
                 }
 
-                session.Remove("WEAPON_ID");
-                session.Remove("FRAME_NUMBER");
-                session.Remove("PLAYER_STATE");
-                session.Remove("PLAYERS_ON_SERVER");
-                session.Remove("PLAYER_MOVEMENT_STATE");
-                session.Remove("HEALTH");
-                
-                finaData.Add(new JProperty("Session_"+data.IndexOf(session),session));
+                session.Remove ("WEAPON_ID");
+                session.Remove ("FRAME_NUMBER");
+                session.Remove ("PLAYER_STATE");
+                session.Remove ("PLAYERS_ON_SERVER");
+                session.Remove ("PLAYER_MOVEMENT_STATE");
+                session.Remove ("HEALTH");
+                int time = session["SESSION_START_TIME"].ToObject<int> ();
+                session.Remove ("SESSION_START_TIME");
+                System.DateTime dtDateTime = new DateTime (1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+                dtDateTime = dtDateTime.AddSeconds (time).ToLocalTime ();
+                session.Add("SESSION_START_TIME",dtDateTime);
+
+                finalData.Add (new JProperty ("Session_" + data.IndexOf (session), session));
 
             }
 
@@ -145,13 +144,11 @@ namespace Junction18 {
                 new JProperty ("AVERAGE_PLACEMENT", averagePlacement)
             );
 
-            
-            finaData.Add (new JProperty("Averages",averages));
-            string path = System.IO.Directory.GetCurrentDirectory() + "/client/src/data/gameData.json";
-
-            System.IO.File.WriteAllText(path, finaData.ToString());
-
-           
+            //finaData.Add (new JProperty("Averages",averages));
+            string pathToData = System.IO.Directory.GetCurrentDirectory () + "/client/src/data/gameData.json";
+            string pathToAverages = System.IO.Directory.GetCurrentDirectory () + "/client/src/data/gameAverages.json";
+            System.IO.File.WriteAllText (pathToData, finalData.ToString ());
+            System.IO.File.WriteAllText (pathToAverages, averages.ToString ());
 
         }
 
